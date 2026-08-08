@@ -40,15 +40,11 @@ const systemPrompt = `
 `;
 
 app.get("/", (req, res) => {
-  res.json({
-    status: "ok",
-    service: "AI Creator Studio API",
-    version: "1.0",
-  });
+  res.status(200).send("AIJiaobenPro API Running");
 });
 
 app.get("/health", (req, res) => {
-  res.json({
+  res.status(200).json({
     status: "healthy",
   });
 });
