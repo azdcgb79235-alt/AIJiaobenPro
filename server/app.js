@@ -1,7 +1,11 @@
+console.log("App starting...");
+
 const express = require("express");
 const cors = require("cors");
 const OpenAI = require("openai");
 require("dotenv").config();
+
+console.log("Modules loaded");
 
 const app = express();
 
@@ -78,6 +82,8 @@ app.post("/generate", async (req, res) => {
     });
   }
 });
+
+console.log("About to listen...");
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
