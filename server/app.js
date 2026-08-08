@@ -8,6 +8,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const PORT = process.env.PORT || 3000;
+
 const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
@@ -32,6 +34,20 @@ const systemPrompt = `
 【SHOT】
 拍攝建議（運鏡、字幕、BGM）
 `;
+
+app.get("/", (req, res) => {
+  res.json({
+    status: "ok",
+    service: "AI Creator Studio API",
+    version: "1.0",
+  });
+});
+
+app.get("/health", (req, res) => {
+  res.json({
+    status: "healthy",
+  });
+});
 
 app.post("/generate", async (req, res) => {
   try {
@@ -63,6 +79,6 @@ app.post("/generate", async (req, res) => {
   }
 });
 
-app.listen(3000, () => {
-  console.log("AI Server running on http://localhost:3000");
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });

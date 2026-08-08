@@ -1,4 +1,4 @@
-const API = "http://192.168.0.100:3000";
+const API = "https://aijiaobenpro-production.up.railway.app";
 
 export async function generateScript(prompt: string) {
   const response = await fetch(`${API}/generate`, {
