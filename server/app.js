@@ -1,11 +1,7 @@
-console.log("App starting...");
-
 const express = require("express");
 const cors = require("cors");
 const OpenAI = require("openai");
 require("dotenv").config();
-
-console.log("Modules loaded");
 
 const app = express();
 
@@ -40,12 +36,10 @@ const systemPrompt = `
 `;
 
 app.get("/", (req, res) => {
-  console.log("GET /");
   res.status(200).send("AIJiaobenPro API Running");
 });
 
 app.get("/health", (req, res) => {
-  console.log("GET /health");
   res.status(200).json({ status: "healthy" });
 });
 
@@ -78,8 +72,6 @@ app.post("/generate", async (req, res) => {
     });
   }
 });
-
-console.log("About to listen...");
 
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
