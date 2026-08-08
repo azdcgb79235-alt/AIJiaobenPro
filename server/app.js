@@ -40,13 +40,13 @@ const systemPrompt = `
 `;
 
 app.get("/", (req, res) => {
+  console.log("GET /");
   res.status(200).send("AIJiaobenPro API Running");
 });
 
 app.get("/health", (req, res) => {
-  res.status(200).json({
-    status: "healthy",
-  });
+  console.log("GET /health");
+  res.status(200).json({ status: "healthy" });
 });
 
 app.post("/generate", async (req, res) => {
