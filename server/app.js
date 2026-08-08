@@ -81,6 +81,6 @@ app.post("/generate", async (req, res) => {
 
 console.log("About to listen...");
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
 });
