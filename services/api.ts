@@ -1,4 +1,4 @@
-const API = "https://aijiaobenpro-production.up.railway.app";
+const API = "https://practical-playfulness-production-bbc3.up.railway.app";
 
 export async function generateScript(prompt: string) {
   const response = await fetch(`${API}/generate`, {
