@@ -73,6 +73,39 @@ app.post("/generate", async (req, res) => {
   }
 });
 
+/** Plain-text generation for product fields — does not change /generate script logic. */
+app.post("/generate-text", async (req, res) => {
+  try {
+    const { prompt, system } = req.body;
+
+    const response = await client.responses.create({
+      model: "gpt-5.5",
+      input: [
+        {
+          role: "system",
+          content:
+            system ||
+            "你是專業電商與短影音文案助手。只輸出使用者要求的內容，不要加標題、前言或結尾說明。",
+        },
+        {
+          role: "user",
+          content: prompt,
+        },
+      ],
+    });
+
+    res.json({
+      result: response.output_text,
+    });
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
+
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
 });
